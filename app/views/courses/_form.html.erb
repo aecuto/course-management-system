@@ -1,0 +1,25 @@
+<%= bootstrap_form_for(course) do |f| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.text_field :name %>
+    <%= f.text_area :description %>
+    <%= f.text_field :category %>
+    <%= f.text_field :subject %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :end_time %>
+    <%= f.number_field :number_of_student %>
+
+    <%= f.submit %>
+
+<% end %>

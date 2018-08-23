@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<table data-toggle="table" data-search="true">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Subject</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Number of student</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.description %></td>
+        <td><%= course.category %></td>
+        <td><%= course.subject %></td>
+        <td><%= course.start_time %></td>
+        <td><%= course.end_time %></td>
+        <td><%= course.number_of_student %></td>
+        <td><%= link_to 'Show', course, class: "btn btn-primary" %></td>
+        
+        <% if can? :manage, Course %>
+          <td><%= link_to 'Edit', edit_course_path(course), class: "btn btn-warning" %></td>
+          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
+
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

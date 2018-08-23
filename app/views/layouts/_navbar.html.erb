@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="<%= courses_path %>">Course </a>
+      </li>
+    </ul>
+    <% if user_signed_in? %>
+ 
+      <%= link_to('Edit registration', edit_user_registration_path, class: "btn btn-outline-light") %>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-light") %>        
+    
+    <% else %>
+    
+      <%= link_to('Register', new_user_registration_path, class: "btn btn-outline-light")  %>
+      <%= link_to('Login', new_user_session_path, class: "btn btn-outline-light")  %>  
+    
+    <% end %>
+  </div>
+</nav>

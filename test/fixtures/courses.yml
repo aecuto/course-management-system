@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  category: MyString
+  subject: MyString
+  start_time: 2018-08-23 16:20:09
+  end_time: 2018-08-23 16:20:09
+  number_of_student: 1
+
+two:
+  name: MyString
+  description: MyText
+  category: MyString
+  subject: MyString
+  start_time: 2018-08-23 16:20:09
+  end_time: 2018-08-23 16:20:09
+  number_of_student: 1
