@@ -8,6 +8,7 @@ end
 gem 'devise'
 gem 'cancancan'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
+gem 'will_paginate', '~> 3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'

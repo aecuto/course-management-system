@@ -1,45 +1,46 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.blank? %>
+<div class="alert alert-info alert-dismissible fade show" role="alert" id="notice">
+  <%= notice %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% end %>
 
-<h1>Courses</h1>
+<div class="row">
 
-<table data-toggle="table" data-search="true">
+<div class="col-sm"><h1>Courses</h1></div>
+<div class="col-sm text-right">
+  <%= link_to 'New Course', new_course_path, class: 'btn btn-primary' %>
+</div>
+
+</div>
+
+<table data-toggle="table"
+       data-query-params-type="page"
+       data-search="true"
+       data-pagination-pre-text="Previous"
+       data-pagination-next-text="Next"
+       data-pagination="true"
+       data-pagination-loop ="false"
+       data-side-pagination="server"
+       data-url="courses.json">
   <thead>
     <tr>
       <th data-field="name">Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Subject</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Number of student</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th data-field="description">Description</th>
+      <th data-field="category">Category</th>
+      <th data-field="subject">Subject</th>
+      <th data-field="start_time">Start time</th>
+      <th data-field="end_time">End time</th>
+      <th data-field="number_of_student">Number of student</th>
+      <% if can? :manage, Course %>
+        <th data-field="edit"></th>
+        <th data-field="delete"></th>
+      <% end %>
     </tr>
   </thead>
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.category %></td>
-        <td><%= course.subject %></td>
-        <td><%= course.start_time %></td>
-        <td><%= course.end_time %></td>
-        <td><%= course.number_of_student %></td>
-        <td><%= link_to 'Show', course, class: "btn btn-primary" %></td>
-        
-        <% if can? :manage, Course %>
-          <td><%= link_to 'Edit', edit_course_path(course), class: "btn btn-warning" %></td>
-          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <% end %>
-
-        
-      </tr>
-    <% end %>
-  </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>

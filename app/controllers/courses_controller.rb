@@ -7,7 +7,19 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+
+    @courses = Course.search(params[:searchText]).order("created_at desc").paginate(page: params[:pageNumber], per_page: params[:pageSize])
+
+    respond_to do |f|
+      f.html { render 'courses/index' }
+      f.json { 
+        render json: {
+          total: @courses.total_entries,
+          rows: @courses.as_json({ index: true })
+        } 
+      }
+    end
+
   end
 
   # GET /courses/1
@@ -31,7 +43,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to courses_url, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -45,7 +57,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to courses_url, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }

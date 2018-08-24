@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/">Course Management System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,10 +9,13 @@
       <li class="nav-item">
         <a class="nav-link" href="<%= courses_path %>">Course </a>
       </li>
+      <li class="nav-item">
+        <a href="https://github.com/Aquzohr/courseManagementSystem" class="nav-link">Github</a>
+      </li>
     </ul>
     <% if user_signed_in? %>
  
-      <%= link_to('Edit registration', edit_user_registration_path, class: "btn btn-outline-light") %>
+      <%= link_to('Update Profile', edit_user_registration_path, class: "btn btn-outline-light") %>
       <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-light") %>        
     
     <% else %>

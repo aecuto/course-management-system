@@ -14,3 +14,7 @@
  *= require_self
  *= require rails_bootstrap_forms
  */
+
+ nav{
+  margin-bottom: 20px;
+ }
