@@ -5,8 +5,9 @@
     <%= f.text_field :firstname %>
     <%= f.text_field :lastname %>
     <%= f.text_field :nickname %>
-    <%= f.datetime_field :birthday %>
-    <%= f.text_field :gender %>
+    <%= f.date_field :birthday %>
+    <%= f.select :gender, ["Male", "Female"], :include_blank => 'Select Gender' %>
+
 
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 
